@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Styled Question Paper</title>
+    <style>
+        /* Embedded CSS styles */
+        body {
+            background-color: #f5f5dc; /* Light beige background */
+            font-family: 'Arial', sans-serif; /* Font style */
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 70%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #800000; /* Maroon color */
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #800000; /* Maroon color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #b22222; /* Darker maroon */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sample Question Paper</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+        <p>1. What is the capital of France?</p>
+        <div class="options">
+            <label><input type="radio" name="q1" value="a"> A) Madrid</label>
+            <label><input type="radio" name="q1" value="b"> B) Berlin</label>
+            <label><input type="radio" name="q1" value="c"> C) Paris</label>
+            <label><input type="radio" name="q1" value="d"> D) Lisbon</label>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <p>2. Which planet is known as the Red Planet?</p>
+        <div class="options">
+            <label><input type="radio" name="q2" value="a"> A) Earth</label>
+            <label><input type="radio" name="q2" value="b"> B) Mars</label>
+            <label><input type="radio" name="q2" value="c"> C) Jupiter</label>
+            <label><input type="radio" name="q2" value="d"> D) Saturn</label>
+        </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <p>3. What is the largest ocean on Earth?</p>
+        <div class="options">
+            <label><input type="radio" name="q3" value="a"> A) Atlantic Ocean</label>
+            <label><input type="radio" name="q3" value="b"> B) Indian Ocean</label>
+            <label><input type="radio" name="q3" value="c"> C) Arctic Ocean</label>
+            <label><input type="radio" name="q3" value="d"> D) Pacific Ocean</label>
+        </div>
+    </div>
+
+    <!-- Additional questions -->
+    <!-- Questions 4 to 10 go here in the same format -->
+
+    <!-- Submit Button -->
+    <button class="submit-button" onclick="submitQuiz()">Submit</button>
+</div>
+
+<script>
+    function submitQuiz() {
+        // Get all the questions
+        const questions = document.querySelectorAll('.question');
+        let allAnswered = true;
+
+        // Check each question to see if it has an answer selected
+        questions.forEach((question, index) => {
+            const options = question.querySelectorAll('input[type="radio"]');
+            let answered = false;
+
+            options.forEach(option => {
+                if (option.checked) {
+                    answered = true;
+                }
+            });
+
+            if (!answered) {
+                alert(Please answer question ${index + 1});
+                allAnswered = false;
+                return; // Exit the loop if a question is not answered
+            }
+        });
+
+        // If all questions are answered, display a thank you message
+        if (allAnswered) {
+            alert('Thank you for submitting the quiz!');
+        }
+    }
+</script>
+
+</body>
+</html>
